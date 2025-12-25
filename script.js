@@ -1,4 +1,4 @@
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
   const prices = document.querySelectorAll(".prices");
   let total = 0;
 
@@ -6,8 +6,10 @@ window.onload = function () {
     total += Number(price.textContent);
   });
 
-  const table = document.querySelector("table"); // ✅ FIX
+  // Select the existing table (already provided by platform)
+  const table = document.querySelector("table");
 
+  // Create last row
   const totalRow = document.createElement("tr");
   const totalCell = document.createElement("td");
 
@@ -16,4 +18,4 @@ window.onload = function () {
 
   totalRow.appendChild(totalCell);
   table.appendChild(totalRow);
-};
+});
