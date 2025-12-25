@@ -1,18 +1,19 @@
-const prices = document.querySelectorAll(".prices");
-    let total = 0;
+window.onload = function () {
+  const prices = document.querySelectorAll(".prices");
+  let total = 0;
 
-    prices.forEach(price => {
-      total += Number(price.textContent);
-    });
+  prices.forEach(price => {
+    total += Number(price.textContent);
+  });
 
-    const table = document.getElementById("grocery-table");
+  const table = document.querySelector("table"); // ✅ FIX
 
-    // Create new row
-    const totalRow = document.createElement("tr");
-    const totalCell = document.createElement("td");
+  const totalRow = document.createElement("tr");
+  const totalCell = document.createElement("td");
 
-    totalCell.colSpan = 2;
-    totalCell.textContent = `Total Price: ${total}`;
+  totalCell.colSpan = 2;
+  totalCell.textContent = total;
 
-    totalRow.appendChild(totalCell);
-    table.appendChild(totalRow);
+  totalRow.appendChild(totalCell);
+  table.appendChild(totalRow);
+};
