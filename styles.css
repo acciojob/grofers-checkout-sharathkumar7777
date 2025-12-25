@@ -1,2 +1,11 @@
 
 /* Your CSS Code here. */
+table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
