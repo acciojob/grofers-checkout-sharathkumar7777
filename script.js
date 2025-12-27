@@ -1,31 +1,29 @@
 const button = document.getElementById("calculate");
 
 button.addEventListener("click", () => {
-  // Get all prices
-  const priceElements = document.querySelectorAll(".prices");
+  const prices = document.querySelectorAll(".prices");
   let total = 0;
 
-  priceElements.forEach(price => {
-    total += Number(price.textContent);
+  prices.forEach(p => {
+    total += Number(p.textContent);
   });
 
-  // Remove old total row if exists
-  const oldRow = document.getElementById("total-row");
+  // Remove previous answer row if exists
+  const oldRow = document.getElementById("ans-row");
   if (oldRow) {
     oldRow.remove();
   }
 
   // Create new row
-  const totalRow = document.createElement("tr");
-  totalRow.id = "total-row";
+  const row = document.createElement("tr");
+  row.id = "ans-row";
 
-  const totalCell = document.createElement("td");
-  totalCell.colSpan = 2;
-  totalCell.textContent = total;
+  // Create cell with REQUIRED id="ans"
+  const cell = document.createElement("td");
+  cell.id = "ans";
+  cell.colSpan = 2;
+  cell.textContent = total;
 
-  totalRow.appendChild(totalCell);
-
-  document
-    .getElementById("grocery-table")
-    .appendChild(totalRow);
+  row.appendChild(cell);
+  document.getElementById("grocery-table").appendChild(row);
 });
