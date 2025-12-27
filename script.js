@@ -1,21 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const prices = document.querySelectorAll(".prices");
-  let total = 0;
+// Select all price elements
+const priceElements = document.querySelectorAll(".prices");
 
-  prices.forEach(price => {
-    total += Number(price.textContent);
-  });
+let total = 0;
 
-  // Select the existing table (already provided by platform)
-  const table = document.querySelector("table");
-
-  // Create last row
-  const totalRow = document.createElement("tr");
-  const totalCell = document.createElement("td");
-
-  totalCell.colSpan = 2;
-  totalCell.textContent = total;
-
-  totalRow.appendChild(totalCell);
-  table.appendChild(totalRow);
+// Calculate total price dynamically
+priceElements.forEach(price => {
+  total += Number(price.textContent);
 });
+
+// Create a new row
+const totalRow = document.createElement("tr");
+
+// Create a single cell
+const totalCell = document.createElement("td");
+
+// Make the cell span across columns (optional but clean)
+totalCell.colSpan = 2;
+
+// Set total text
+totalCell.textContent = `Total Price: ${total}`;
+
+// Append cell to row
+totalRow.appendChild(totalCell);
+
+// Append row to the table
+document
+  .getElementById("grocery-table")
+  .appendChild(totalRow);
