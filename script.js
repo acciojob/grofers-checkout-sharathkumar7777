@@ -1,19 +1,21 @@
-const button = document.querySelector("button");
+const button = document.getElementById("calculate");
 
 button.addEventListener("click", () => {
-  const prices = document.querySelectorAll(".prices");
+  // Get all prices
+  const priceElements = document.querySelectorAll(".prices");
   let total = 0;
 
-  prices.forEach(price => {
+  priceElements.forEach(price => {
     total += Number(price.textContent);
   });
 
-  // Prevent duplicate total row
-  const existingTotal = document.getElementById("total-row");
-  if (existingTotal) {
-    existingTotal.remove();
+  // Remove old total row if exists
+  const oldRow = document.getElementById("total-row");
+  if (oldRow) {
+    oldRow.remove();
   }
 
+  // Create new row
   const totalRow = document.createElement("tr");
   totalRow.id = "total-row";
 
@@ -22,5 +24,8 @@ button.addEventListener("click", () => {
   totalCell.textContent = total;
 
   totalRow.appendChild(totalCell);
-  document.getElementById("grocery-table").appendChild(totalRow);
+
+  document
+    .getElementById("grocery-table")
+    .appendChild(totalRow);
 });
