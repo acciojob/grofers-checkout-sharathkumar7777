@@ -1,6 +1,7 @@
-const button = document.getElementById("calculate");
-
-button.addEventListener("click", () => {
+const btn1 = document.createElement("button");
+btn1.textContent = "total_price";
+document.body.appendChild(btn1);
+btn1.addEventListener("click", () => {
   const prices = document.querySelectorAll(".prices");
   let total = 0;
 
