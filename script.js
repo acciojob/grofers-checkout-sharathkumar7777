@@ -1,30 +1,33 @@
-const btn1 = document.createElement("button");
-btn1.textContent = "total_price";
-document.body.appendChild(btn1);
-btn1.addEventListener("click", () => {
+
+const getSumBtn = document.createElement("button");
+getSumBtn.textContent = "Get Total Price";
+document.body.appendChild(getSumBtn);
+ 
+const getSum = () => {
   const prices = document.querySelectorAll(".prices");
-  let total = 0;
-
-  prices.forEach(p => {
-    total += Number(p.textContent);
+  let sum = 0;
+ 
+  prices.forEach(price => {
+    sum += Number(price.textContent);
   });
-
-  // Remove previous answer row if exists
-  const oldRow = document.getElementById("ans-row");
-  if (oldRow) {
-    oldRow.remove();
+ 
+  const table = document.querySelector("table");
+ 
+  // Remove existing total row if button is clicked again
+  const oldAns = document.getElementById("ans");
+  if (oldAns) {
+    oldAns.parentElement.remove();
   }
-
-  // Create new row
-  const row = document.createElement("tr");
-  row.id = "ans-row";
-
-  // Create cell with REQUIRED id="ans"
-  const cell = document.createElement("td");
-  cell.id = "ans";
-  cell.colSpan = 2;
-  cell.textContent = total;
-
-  row.appendChild(cell);
-  document.getElementById("grocery-table").appendChild(row);
-});
+ 
+  const totalRow = document.createElement("tr");
+  const totalCell = document.createElement("td");
+ 
+  totalCell.colSpan = 2;
+  totalCell.id = "ans"; // important for tests
+  totalCell.textContent = sum;
+ 
+  totalRow.appendChild(totalCell);
+  table.appendChild(totalRow);
+};
+ 
+getSumBtn.addEventListener("click", getSum);
